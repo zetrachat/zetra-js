@@ -1,0 +1,25 @@
+{
+  "name": "@zetra/sdk",
+  "version": "0.1.0",
+  "description": "Official JavaScript/TypeScript SDK and web chat widget for Zetra AI agents",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
+    "./widget": "./dist/embed.js"
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json && esbuild src/widget.ts --bundle --minify --format=iife --target=es2019 --outfile=dist/embed.js",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "engines": { "node": ">=18" },
+  "keywords": ["zetra", "ai", "chatbot", "agent", "sdk"],
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.24.0",
+    "typescript": "^5.6.0"
+  }
+}
